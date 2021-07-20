@@ -1,52 +1,50 @@
 const dotenv = require('dotenv');
-const express = require('mongoose');
+const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 
+
+
 dotenv.config({path: './.env'});
-const DB =process.env.DATABASE;
+require('./db/connection');
+const User = require('./model/userSchema');
+
 const PORT=process.env.PORT;
 //const DB ='mongodb+srv://AkhileshSahu2022:6261022101@cluster0.sszwo.mongodb.net/touristguide?retryWrites=true&w=majority';
-mongoose.connect(DB,{
-    useNewUrlParser:true,
-    useCreateIndex: true,
-    useUnifiedTopology:true,
-    usezfindModify:false
-}).then(() =>{
-    console.log('connection successful');
 
-}).catch((err) => console.log('no connection'));
 
-// Middelware
+//Middelware
 
-const Middelware = (req, res, next) =>{
-    console.log('hello my middelware');
-
+const Middleware = (req, res, next) =>{
+    console.log(`hello my middelware`);
+    //next();
 }
 
-Middelware();
+Middleware();
 
-app.get('/' ,(req, res) =>{
-    console.log('hello from server');
+app.get('/', (req, res) =>{
+    res.send(`hello from server`);
+    
 });
 
-app.get('/about' ,Middelware,(req, res) =>{
-    console.log('hello about from server');
+app.get('/about', (req, res) => {
+   res.send(`hello about from server`);
 });
 
-app.get('/contact' ,Middelware,(req, res) =>{
-    console.log('hello contact from server');
+app.get('/contact', (req, res) => {
+    res.send(`hello contact from server`);
 });
 
-app.get('/signin' ,Middelware,(req, res) =>{
-    console.log('hello signin from server');
+app.get('/signin', (req, res) => {
+   res.send(`hello signin from server`);
 });
 
 
 //console.log("Hello Akhilesh");
 
-app.listen(PORT, () =>{
-    console.log(`Server is running at port no ${PORT}`);
+app.listen(PORT,()=>{
+    console.log(`surver running on PORT no ${PORT}`)
 })
+
 
 
