@@ -10,7 +10,7 @@ require('./db/connection');
 const User = require('./model/userSchema');
 
 const PORT=process.env.PORT;
-//const DB ='mongodb+srv://AkhileshSahu2022:6261022101@cluster0.sszwo.mongodb.net/touristguide?retryWrites=true&w=majority';
+//const DB ='mongodb+srv://@cluster0.sszwo.mongodb.net/touristguide?retryWrites=true&w=majority';
 
 
 //Middelware
